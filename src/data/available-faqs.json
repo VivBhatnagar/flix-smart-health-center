@@ -1,0 +1,21 @@
+[
+  {
+    "id": "f1",
+    "name": "Request a refund",
+    "icon": "/icons/refund-svg.svg"
+  },
+  {
+    "id": "f2",
+    "name": "Booking for Children",
+    "icon": "/icons/children-svg.svg"
+  },
+  {
+    "id": "f3",
+    "name": "Baggage",
+    "icon": "/icons/baggage-svg.svg"
+  },
+  {
+    "id": "f4",
+    "name": "Contact Us",
+    "icon": "/icons/contact-us-svg.svg"
+  }]
