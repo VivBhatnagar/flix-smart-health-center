@@ -13,10 +13,11 @@ export default function Card({ faq }: { faq: FaqType }): JSX.Element {
     >
       <div className="text-green-500 h-8 text-xl mb-2 relative">
         <Image
-          className="w-4 h-4fill-current"
+          className="w-8 h-8"
           src={icon}
           alt={name}
-          fill
+          width={32}
+          height={32}
         />
       </div>
 
