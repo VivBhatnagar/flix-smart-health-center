@@ -11,6 +11,11 @@ export default function FaqDetailsPage({params}: {params: Promise<{faqId: string
     const router = useRouter();
     const [faqData,setFaqData] = useState<FaqDetailType>({id:'', userId: 0, title: '', body: ''});
     
+    /**
+     * Fetches the faq details based on the given faqId from the faqDetail API
+     * and sets the faqData state with the received data.
+     * @param {string} faqId - ID of the faq to fetch details for.
+     */
     const getFaqDetails = async(faqId:string) => {
         const faqData = await getFaqById(faqId)
         setFaqData(faqData);

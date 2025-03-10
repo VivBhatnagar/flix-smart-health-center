@@ -1,5 +1,5 @@
 const faqDetailUrl = "https://jsonplaceholder.typicode.com/posts/";
-const geminiApiUrl = "https://generativelanguage.googleapis.com/v1beta/models/gemini-2.0-flash:generateContent?key=" + process.env.GEMINI_API_KEY || "AIzaSyBs96TpamxSV0bOH7ODQPVYuuhqw1LmNLU";
+const geminiApiUrl = "https://generativelanguage.googleapis.com/v1beta/models/gemini-2.0-flash:generateContent?key={YOUR_API_KEY}";
 
 /**
  * Fetches the FaqDetail data for the given faqId.

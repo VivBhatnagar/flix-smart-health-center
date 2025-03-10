@@ -15,5 +15,3 @@ export default function HelpCenter(): JSX.Element {
     </section>
   );
 }
-
-// middleware
