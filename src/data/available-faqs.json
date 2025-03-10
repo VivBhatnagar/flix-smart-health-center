@@ -1,21 +1,31 @@
 [
   {
-    "id": "f1",
+    "id": "1",
     "name": "Request a refund",
     "icon": "/icons/refund-svg.svg"
   },
   {
-    "id": "f2",
+    "id": "2",
     "name": "Booking for Children",
     "icon": "/icons/children-svg.svg"
   },
   {
-    "id": "f3",
+    "id": "3",
     "name": "Baggage",
     "icon": "/icons/baggage-svg.svg"
   },
   {
-    "id": "f4",
+    "id": "4",
+    "name": "Book a Ticket",
+    "icon": "/icons/tickets-svg.svg"
+  },
+  {
+    "id": "5",
+    "name": "Manage My Bookings",
+    "icon": "/icons/children-svg.svg"
+  },
+  {
+    "id": "6",
     "name": "Contact Us",
     "icon": "/icons/contact-us-svg.svg"
   }]

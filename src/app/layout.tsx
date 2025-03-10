@@ -1,7 +1,7 @@
 import type { Metadata } from "next";
 import "./globals.css";
-import Header from "components/components/header";
-import Footer from "components/components/footer";
+import Header from "@components/header";
+import Footer from "@components/Footer/footer";
 
 export const metadata: Metadata = {
   title: "Flix Mobility Help Center",
@@ -18,7 +18,6 @@ export default function RootLayout({
       <body className="flex justify-between flex-col h-screen">
         <Header />
         <main className="flex-1">
-          {/* <div className="z-[-1] mt-10vh"> */}
           {/* <picture>
            <source
             srcSet="https://cdn-cf.cms.flixbus.com/drupal-assets/2021-10/desktop-flix-hero-q4-2021.jpg"
@@ -38,10 +37,10 @@ export default function RootLayout({
             src="https://cdn-cf.cms.flixbus.com/drupal-assets/2021-10/mobile-flix-hero-q4-2021.jpg"
           />
         </picture> */}
-          <div className="relative w-full h-[50vh] md:h-[60vh] lg:h-[70vh] flex items-center justify-center text-white">
+          <div className="relative w-full h-[80vh] md:h-[70vh] lg:h-[80vh] flex items-center justify-center text-white">
             {/* Background Image with Gradient Overlay */}
             <div
-              className="absolute inset-0 bg-cover bg-center"
+              className="absolute inset-0 bg-cover"
               style={{
                 backgroundImage: `
         linear-gradient(to bottom,transparent,grey),

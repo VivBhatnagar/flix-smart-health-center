@@ -1,57 +1,19 @@
-import FaqsList from "components/components/faqs"
-
+import FaqsList from "@components/Faqs/faqs";
 import { JSX } from "react";
+import fs from "fs";
+import path from "path";
+import { FaqType } from "@common/interface";
 
-export default function HelpCenter() : JSX.Element{
+export default function HelpCenter(): JSX.Element {
+  const pathName = path.join(process.cwd(), "src/data", "available-faqs.json"); // Ensure correct path
+  const jsonData = fs.readFileSync(pathName, "utf-8"); 
+  const data: FaqType[] = JSON.parse(jsonData);
 
-    const faqs = [
-        {
-          "id": "f1",
-          "name": "Request a refund",
-          "icon": "icons/refund-svg.svg"
-        },
-        {
-          "id": "f2",
-          "name": "Booking for Children",
-          "icon": "icons/children-svg.svg"
-        },
-        {
-          "id": "f3",
-          "name": "Baggage",
-          "icon": "icons/baggage-svg.svg"
-        },
-        {
-          "id": "f4",
-          "name": "Contact Us",
-          "icon": "icons/contact-us-svg.svg"
-        },
-        {
-            "id": "f1",
-            "name": "Request a refund",
-            "icon": "icons/refund-svg.svg"
-          },
-          {
-            "id": "f2",
-            "name": "Booking for Children",
-            "icon": "icons/children-svg.svg"
-          },
-          {
-            "id": "f3",
-            "name": "Baggage",
-            "icon": "icons/baggage-svg.svg"
-          },
-          {
-            "id": "f4",
-            "name": "Contact Us",
-            "icon": "icons/contact-us-svg.svg"
-          }]
-      
-    return (
-        <section >
-            <FaqsList faqs={faqs}/>
-        </section>
-        
-    )
+  return (
+    <section>
+      <FaqsList faqs={data} />
+    </section>
+  );
 }
 
 // middleware
