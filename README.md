@@ -88,12 +88,12 @@ This project is a **Responsive Web Application** designed for Flix Mobility Tech
 
 ## Testing
 
--   **Unit Tests: Written using Jest and React Testing Library**.
-    **Test Coverage**: Focused on core functionalities like message sending, FAQ filtering, and responsiveness.
-   ```bash
-   npm test
+-   **Unit Tests**: Written using Jest and React Testing Library.
+-   **Test Coverage**: Focused on core functionalities like message sending, FAQ filtering, and responsiveness
+    ```bash
+     npm test
 
-## Best Practices Followed
+### Best Practices Followed
 
 -   **Modular Code**:
     Components are broken down into reusable and modular pieces.
@@ -137,15 +137,17 @@ This project is a **Responsive Web Application** designed for Flix Mobility Tech
 
 -   **Analytics**: Track user interactions to improve the chatbot's responses over time.    
 
-## Screenshots
 
--   **Landing Page**
-![Landing Page Help Center](landingPage.png)
-
--   **Chatbot UI**
-![Chatbot UI](chatbot.png)
 
 ## Conclusion
 
 -   This project demonstrates my ability to design and implement a responsive, user-friendly web application with modern technologies like Next.js, React, and Tailwind CSS. The integration of Google Gemini API for the chatbot adds a dynamic and interactive element to the application. I have followed best practices in coding, testing, and documentation to ensure a high-quality deliverable.
 
+
+## Screenshots
+
+  **Landing Page**
+![Landing Page Help Center](landingPage.png)
+
+  **Chatbot UI**
+![Chatbot UI ](chatbot.png)
