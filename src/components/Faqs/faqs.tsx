@@ -30,7 +30,7 @@ export default function FaqsList({ faqs }: { faqs: FaqType[] }) {
             <Card faq={faq} key={faq.id} faqsLength={filteredFaqs.length} />
           ))
         ) : (
-          <p className="text-center" aria-label="No FAQs found">No FAQs found</p>
+          <p className="text-center flex flex-col w-2xl m-auto mt-10 p-4 text-primary bg-white rounded border border-green-200" aria-label="No FAQs found">No FAQs found</p>
         )}
       </ul>
     </>
