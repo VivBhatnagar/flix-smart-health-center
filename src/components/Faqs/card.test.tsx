@@ -68,4 +68,24 @@ describe("Card Component", () => {
     const card = screen.getByRole("listitem");
     expect(card).toHaveClass("w-[70%] sm:w-[48%] md:w-[30%] lg:w-[25%] xl:w-[22%]");
   });
+
+  it("adjusts width based on screen size and faqsLength", () => {
+    // Simulate a small screen (mobile)
+    window.resizeTo(375, 667); // Mobile screen size
+    const { rerender } = render(<Card faq={mockFaq} faqsLength={4} />);
+    let card = screen.getByRole("listitem");
+    expect(card).toHaveClass("w-[70%]");
+
+    // Simulate a medium screen (tablet)
+    window.resizeTo(768, 1024); // Tablet screen size
+    rerender(<Card faq={mockFaq} faqsLength={4} />);
+    card = screen.getByRole("listitem");
+    expect(card).toHaveClass("sm:w-[48%]");
+
+    // Simulate a large screen (desktop)
+    window.resizeTo(1200, 800); // Desktop screen size
+    rerender(<Card faq={mockFaq} faqsLength={4} />);
+    card = screen.getByRole("listitem");
+    expect(card).toHaveClass("md:w-[30%] lg:w-[25%] xl:w-[22%]");
+  });
 });

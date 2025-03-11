@@ -26,8 +26,10 @@ export async function getFaqById(faqId: string) {
 
 export const getAiResponse = async (prompt: string) => {
 
+ const geminiApiUrlWithKey = geminiApiUrl.replace("{YOUR_API_KEY}", process.env.NEXT_PUBLIC_GEMINI_API_KEY || '');
+ 
   try {
-    const res = await fetch(geminiApiUrl, {
+    const res = await fetch(geminiApiUrlWithKey, {
       method: "POST",
       headers: { "Content-Type": "application/json" },
       body: JSON.stringify({

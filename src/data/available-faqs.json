@@ -26,6 +26,6 @@
   },
   {
     "id": "6",
-    "name": "Contact Us",
-    "icon": "/icons/contact-us-svg.svg"
+    "name": "Route and delay info",
+    "icon": "/icons/route-svg.svg"
   }]

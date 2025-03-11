@@ -14,8 +14,12 @@ describe("Chatbot Component", () => {
   };
 
   beforeEach(() => {
-    // Reset the mock implementation before each test
     jest.clearAllMocks();
+    jest.useFakeTimers();
+  });
+
+  afterEach(() => {
+    jest.useRealTimers();
   });
 
   it("renders the chatbot button when closed", () => {
@@ -49,12 +53,15 @@ describe("Chatbot Component", () => {
     const closeButton = screen.getByRole("button", { name: /Close Chatbot/ });
     fireEvent.click(closeButton);
 
-     // Check if the chat window is closed
-     const chatWindow = screen.queryByText("Chat with us!");
-     expect(chatWindow).not.toBeInTheDocument();
+    // Check if the chat window is closed
+    const chatWindow = screen.queryByText("Chat with us!");
+    expect(chatWindow).not.toBeInTheDocument();
   });
 
   it("sends a user message and displays it in the chat", async () => {
+     // Mocked the scrollIntoView method
+     const scrollIntoViewMock = jest.fn();
+     window.HTMLElement.prototype.scrollIntoView = scrollIntoViewMock;
     render(<Chatbot />);
 
     // Open the chat window
@@ -66,7 +73,7 @@ describe("Chatbot Component", () => {
     fireEvent.change(input, { target: { value: "Hello, AI!" } });
 
     // Click the send button
-    const sendButton = screen.getByText("Send");
+    const sendButton = screen.getByRole("button", { name: /Send/ });
     fireEvent.click(sendButton);
 
     // Check if the user message is displayed
@@ -75,6 +82,10 @@ describe("Chatbot Component", () => {
   });
 
   it("receives and displays an AI response", async () => {
+     // Mocked the scrollIntoView method
+     const scrollIntoViewMock = jest.fn();
+     window.HTMLElement.prototype.scrollIntoView = scrollIntoViewMock;
+
     // Mock the AI response
     require("@lib/utils").getAiResponse.mockResolvedValue(mockAiResponse);
 
@@ -89,7 +100,7 @@ describe("Chatbot Component", () => {
     fireEvent.change(input, { target: { value: "Hello, AI!" } });
 
     // Click the send button
-    const sendButton = screen.getByText("Send");
+    const sendButton = screen.getByRole("button", { name: /Send/ });
     fireEvent.click(sendButton);
 
     // Wait for the AI response to be displayed
@@ -100,23 +111,27 @@ describe("Chatbot Component", () => {
   });
 
   it("does not send a message if the input is empty", () => {
-  render(<Chatbot />);
+    render(<Chatbot />);
 
-  // Open the chat window
-  const chatbotButton = screen.getByRole("button", { name: /Start Chatbot/ });
-  fireEvent.click(chatbotButton);
+    // Open the chat window
+    const chatbotButton = screen.getByRole("button", { name: /Start Chatbot/ });
+    fireEvent.click(chatbotButton);
 
-  // Click the send button without typing a message
-  const sendButton = screen.getByText("Send");
-  fireEvent.click(sendButton);
+    // Click the send button without typing a message
+    const sendButton = screen.getByRole("button", { name: /Send/ });
+    fireEvent.click(sendButton);
 
-  // Check if no new messages are added
-  const messages = screen.getAllByText(/Hello! How can I assist you today?/);
-  expect(messages).toHaveLength(1); // Only the initial bot message should be present
-});
+    // Check if no new messages are added
+    const messages = screen.getAllByText(/Hello! How can I assist you today?/);
+    expect(messages).toHaveLength(1); // Only the initial bot message should be present
+  });
 
   it("displays a fallback message if the AI response is invalid", async () => {
-    // Mock an invalid AI response
+     // Mocked the scrollIntoView method
+     const scrollIntoViewMock = jest.fn();
+     window.HTMLElement.prototype.scrollIntoView = scrollIntoViewMock;
+
+    // Mocked an invalid AI response
     require("@lib/utils").getAiResponse.mockResolvedValue({});
 
     render(<Chatbot />);
@@ -130,7 +145,7 @@ describe("Chatbot Component", () => {
     fireEvent.change(input, { target: { value: "Hello, AI!" } });
 
     // Click the send button
-    const sendButton = screen.getByText("Send");
+    const sendButton = screen.getByRole("button", { name: /Send/ });
     fireEvent.click(sendButton);
 
     // Wait for the fallback message to be displayed
@@ -138,5 +153,28 @@ describe("Chatbot Component", () => {
       const fallbackMessage = screen.getByText("No response from AI.");
       expect(fallbackMessage).toBeInTheDocument();
     });
+  });
+
+  it("scrolls to the latest message when a new message is added", () => {
+    // Mocked the scrollIntoView method
+    const scrollIntoViewMock = jest.fn();
+    window.HTMLElement.prototype.scrollIntoView = scrollIntoViewMock;
+    render(<Chatbot />);
+
+    // Open the chat window
+    const chatbotButton = screen.getByRole("button", { name: /Start Chatbot/ });
+    fireEvent.click(chatbotButton);
+
+    // Type a message in the input
+    const input = screen.getByPlaceholderText("Type your message...");
+    fireEvent.change(input, { target: { value: "Hello, AI!" } });
+
+    // Click the send button
+    const sendButton = screen.getByRole("button", { name: /Send/ });
+    fireEvent.click(sendButton);
+
+    // Check if the latest message is in view
+    const latestMessage = screen.getByText("Hello, AI!");
+    expect(latestMessage).toBeInTheDocument();
   });
 });
