@@ -16,8 +16,8 @@ export default function Error({
  
   return (
     <div className='bg-white'>
-      <h2>{error.message}</h2>
-      <button
+      <h2 aria-label={error.message}>{error.message}</h2>
+      <button aria-label='Try again'
         onClick={
           // Attempt to recover by trying to re-render the segment
           () => reset()

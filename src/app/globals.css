@@ -3,8 +3,6 @@
 :root {
   --background: #ffffff;
   --foreground: #171717;
-  --primary-color: #137b17; /* Example green color */
-
 }
 
 @theme inline {
@@ -21,11 +19,11 @@
 
 
 .bg-primary {
-  background-color: var(--primary-color);
+  background-color: var(--color-green-500);
 }
 
 .text-primary {
-  color: var(--primary-color);
+  color: var(--color-green-500);
 }
 
 body {

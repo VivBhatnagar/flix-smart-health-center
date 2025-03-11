@@ -1,11 +1,10 @@
 import { JSX } from "react";
 import Image from "next/image";
 import Link from "next/link";
-import Search from "./search";
 
 export default function Header(): JSX.Element {
   return (
-    <header className="bg-green-500 h-[15vh] flex">
+    <header className="bg-primary h-[15vh] flex px-6">
       <Link className="basis-1/3 px-4 py-2" href="/">
         <Image
           className="w-auto h-auto"
@@ -16,9 +15,8 @@ export default function Header(): JSX.Element {
           priority
         />
       </Link>
-      <div className="basis-2/3 pt-2 pb-6">
-        <h1 className="text-3xl font-bold text-white m-auto">Help Center</h1>
-        
+      <div className="basis-1/3 flex justify-center">
+        <h1 className="text-2xl md:text-3xl font-bold text-white m-auto" aria-label="Help Center">Help Center</h1>
       </div>
     </header>
   );

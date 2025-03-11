@@ -1,8 +1,8 @@
 'use client';
 
 import { use, useEffect, useState } from "react";
-import type {FaqDetailType} from "@common/interface";
-import { FaqDetail } from "@components/faqDetail";
+import type {FaqDetailType} from "@common/Interface/faq";
+import { FaqDetail } from "@components/FaqDetail/faqDetail";
 import { getFaqById } from "@lib/utils";
 import { useRouter } from "next/navigation";
 
@@ -25,17 +25,17 @@ export default function FaqDetailsPage({params}: {params: Promise<{faqId: string
         getFaqDetails(faqId)
     }, [faqId]);
 
-    // if(!faqData.id) return <p className="flex justify-center items-center">Loading...</p>;
+    if(!faqData.id) return <p className="flex justify-center items-center">Loading...</p>;
 
     return (
        <>
-            <button
-                className="bg-white border-green-200 text-green-500 px-4 py-2 rounded m-4 cursor-pointer hover:bg-green-100"
+            <button aria-label="Back Button"
+                className="bg-white border-green-200 text-primary px-4 py-2 rounded m-4 cursor-pointer hover:bg-green-100"
                 onClick={() => router.back()}
             >
                 ⬅ Back
             </button>
-         {faqData.id && (<section>
+         {faqData.id && (<section className="bg-white rounded border border-green-200 backdrop-opacity-5">
          <FaqDetail key={faqData.id} faqDetail={faqData} />
          </section>)
         }

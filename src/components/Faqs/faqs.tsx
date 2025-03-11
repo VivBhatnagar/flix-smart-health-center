@@ -1,22 +1,38 @@
+"use client";
 
-
-import { FaqType } from "@/common/interface";
+import { useState } from "react";
+import { FaqType } from "@common/Interface/faq";
 import Card from "./card";
+import Search from "@common/Search/search";
 
 export default function FaqsList({ faqs }: { faqs: FaqType[] }) {
-  return (
-    <ul className="flex flex-wrap justify-center gap-4 p-6">
-      {faqs.map((faq) => (
-        <Card faq={faq} key={faq.id} />
-      ))}
-    </ul>
-  );
+  const [filteredFaqs, setFilteredFaqs] = useState<FaqType[]>(faqs);
+  const originalFaqs = [...faqs];
 
-  // return (
-  //   <ul className="grid grid-cols-1 py-10 sm:grid-cols-2 md:grid-cols-3 gap-6 mt-6 px-20">
-  //     {faqs.map((faq) => (
-  //       <Card key={faq.id} faq={faq} />
-  //     ))}
-  //   </ul>
-  // );
+  const handleSearch = (searchTerm: string) => {
+    if (!searchTerm) {
+      setFilteredFaqs(originalFaqs);
+      return;
+    }
+    const filtered = originalFaqs.filter((faq) =>
+      faq.name.toLowerCase().includes(searchTerm.toLowerCase())
+    );
+
+    setFilteredFaqs(filtered);
+  };
+
+  return (
+    <>
+      <Search handleSearch={handleSearch} />
+      <ul className="flex flex-wrap justify-center gap-4 p-6">
+        {filteredFaqs.length > 0 ? (
+          filteredFaqs.map((faq) => (
+            <Card faq={faq} key={faq.id} faqsLength={filteredFaqs.length} />
+          ))
+        ) : (
+          <p className="text-center" aria-label="No FAQs found">No FAQs found</p>
+        )}
+      </ul>
+    </>
+  );
 }

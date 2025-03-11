@@ -1,5 +1,5 @@
 import { JSX } from "react";
-import Chatbot from "./chatbot";
+import Chatbot from "@common/ChatBot/chatbot";
 
 export default function Footer():JSX.Element {
 

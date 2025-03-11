@@ -1,17 +1,18 @@
 import Image from "next/image";
 import { JSX } from "react";
-import { FaqType } from "@/common/interface";
+import { FaqType } from "@common/Interface/faq";
 import Button from "@components/Faqs/Button";
 
-export default function Card({ faq }: { faq: FaqType }): JSX.Element {
+export default function Card({ faq, faqsLength }: { faq: FaqType, faqsLength: number }): JSX.Element {
   const { id, name, icon } = faq;
 
   return (
     <li
       key={id}
-      className="py-5 text-center border-2 border-green-200 w-[70%] sm:w-[48%] md:w-[30%] lg:w-[25%] xl:w-[22%] bg-white rounded-lg shadow-md p-6 flex flex-col items-center"
+      className={`py-5 text-center border-2 border-green-200 bg-white rounded-lg shadow-md p-6 flex flex-col items-center
+        ${faqsLength <= 3 ? "w-[45%] md:w-[40%]" : "w-[70%] sm:w-[48%] md:w-[30%] lg:w-[25%] xl:w-[22%]"}`}
     >
-      <div className="text-green-500 h-8 text-xl mb-2 relative">
+      <div className="text-primary h-8 text-xl mb-2 relative">
         <Image
           className="w-8 h-8"
           src={icon}
@@ -21,7 +22,7 @@ export default function Card({ faq }: { faq: FaqType }): JSX.Element {
         />
       </div>
 
-      <h3 className="text-xl font-semibold text-green-500" aria-label={name}>
+      <h3 className="text-xl font-semibold text-primary" aria-label={name}>
         {name}
       </h3>
       <Button faqId={id} name="Learn More" />
