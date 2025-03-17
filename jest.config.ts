@@ -1,7 +1,6 @@
 import type { Config } from "jest";
 
 const config: Config = {
-  preset: "ts-jest",
   testEnvironment: "jsdom",
   moduleFileExtensions: ["ts", "tsx", "js", "jsx"],
   testMatch: [
@@ -15,7 +14,9 @@ const config: Config = {
   },
   verbose:true,
   transform: {
-    "^.+\\.(ts|tsx)$": "babel-jest",
+    "^.+\\.(ts|tsx)$": ["babel-jest",{
+      configFile: './.babelrc.jest',
+    }],
   },
   setupFilesAfterEnv: ["<rootDir>/jest.setup.ts"],
 };
